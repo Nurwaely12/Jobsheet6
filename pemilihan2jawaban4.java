@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Pemilihan2Percobaan213 {
+public class pemilihan2jawaban4 {
     public static void main(String[] args) {
         Scanner input13 = new Scanner(System.in);
         int pilihan_menu;
@@ -8,6 +8,8 @@ public class Pemilihan2Percobaan213 {
         double diskon;
         int harga;
         double total_bayar;  
+        String jenis_pembayaran;
+        int potongan_qris = 1000;
 
         System.out.println("------------------------");
         System.out.println("===== MENU KAFE JTI =====");
@@ -18,15 +20,16 @@ public class Pemilihan2Percobaan213 {
         System.out.println("=========================================");
         System.out.print("Masukkan angka dari menu yang dipilih = ");
         pilihan_menu = input13.nextInt();
-        input13.nextLine(); 
+        input13.nextLine();
         System.out.print("Apakah punya member (y/n) ? = ");
         member = input13.nextLine();
-        
+        System.out.print("Jenis pembayaran (QRIS/Tunai) ? = ");
+        jenis_pembayaran = input13.nextLine();
 
         System.out.println("-------------------------------------------");
         System.out.println("Menu yang dipilih: " + pilihan_menu);
         System.out.println("Status member: " + member);
-       
+        System.out.println("Jenis pembayaran: " + jenis_pembayaran);
 
         if (member.equalsIgnoreCase("y")) {
             diskon = 0.10;
@@ -67,12 +70,21 @@ public class Pemilihan2Percobaan213 {
                 return;
             }
 
-            System.out.println("Total bayar = " + harga);
+            total_bayar = harga;
+            System.out.println("Total bayar = " + total_bayar);
 
         } else {
             System.out.println("Input member tidak valid");
+            return;
         }
 
+        
+        if (jenis_pembayaran.equalsIgnoreCase("QRIS")) {
+            total_bayar = total_bayar - potongan_qris;
+            System.out.println("Mendapatkan potongan Rp. 1.000 karena pembayaran via QRIS.");
+        }
+
+        System.out.println("Total yang harus dibayar: " + total_bayar);
         System.out.println("============================================");
     }
 }
